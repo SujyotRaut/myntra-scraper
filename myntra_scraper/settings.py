@@ -12,18 +12,11 @@ BOT_NAME = 'myntra_scraper'
 SPIDER_MODULES = ['myntra_scraper.spiders']
 NEWSPIDER_MODULE = 'myntra_scraper.spiders'
 
-from shutil import which
-
-SELENIUM_DRIVER_NAME = 'firefox'
-SELENIUM_DRIVER_EXECUTABLE_PATH = which('geckodriver')
-# '--headless' if using chrome instead of firefox
-# SELENIUM_DRIVER_ARGUMENTS=['-headless']
-
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'myntra_scraper (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -92,3 +85,9 @@ DOWNLOADER_MIDDLEWARES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+from shutil import which
+
+SELENIUM_DRIVER_NAME = 'firefox'
+SELENIUM_DRIVER_EXECUTABLE_PATH = which('geckodriver')
+SELENIUM_DRIVER_ARGUMENTS=['-headless']
