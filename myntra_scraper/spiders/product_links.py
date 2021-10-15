@@ -12,7 +12,7 @@ class ProductLinksSpider(scrapy.Spider):
 
     def __init__(self, name=None, **kwargs):
         super().__init__(name=name, **kwargs)
-        self.url = kwargs.get('url') or 'https://www.myntra.com/men-clothing'
+        self.url = kwargs.get('url') or 'https://www.myntra.com/clothing'
         self.pages = int(kwargs.get('pages') or '1')
 
 
@@ -33,7 +33,7 @@ class ProductLinksSpider(scrapy.Spider):
         self.num_of_pages_scraped += 1
         next_page = response.css(self.SELECTOR_NEXT_PAGE)
         if next_page:
-            if(self.num_of_pages_scraped < self.pages):
+            if(self.num_of_pages_scraped < self.pages or self.pages == 0):
                 yield SeleniumRequest(
                     url=str(next_page.attrib['href']),
                     callback=self.parse
